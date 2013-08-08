@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
   s.has_rdoc=true
 
-  s.test_suite_file = 'test/ALL-TESTS.rb'
+  s.test_file = 'test/ALL-TESTS.rb'
 
   s.author = "Jamis Buck"
   s.email = "jamis@jamisbuck.org"

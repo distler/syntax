@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'rake'
 require 'rake/testtask'
-require 'rake/rdoctask'
+require 'rdoc/task'
 require 'rake/contrib/sshpublisher'
 
 require "./lib/syntax/version"
@@ -25,7 +25,7 @@ PACKAGE_FILES = FileList.new do |fl|
   fl.include SOURCE_FILES
 end
 
-Gem.manage_gems
+#Gem::manage_gems
 
 def can_require( file )
   begin
