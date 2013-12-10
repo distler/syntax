@@ -61,6 +61,7 @@ module Syntax
             indent = check(/ */)
             start_group :string
             loop do
+              break if eos?
               line = check_until(/[\n\r]|\Z/)
               break if line.nil?
               if line.chomp.length > 0
