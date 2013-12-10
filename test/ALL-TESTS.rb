@@ -2,4 +2,4 @@
 $:.unshift "../lib"
 
 Dir.chdir File.dirname(__FILE__)
-Dir["**/tc_*.rb"].each { |file| load file }
+Dir["**/tc_*.rb"].each { |file| load File.expand_path(file) }
