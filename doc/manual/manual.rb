@@ -10,6 +10,13 @@
 require 'erb'
 require 'fileutils'
 require 'yaml'
+
+if RUBY_VERSION.split(".")[0].to_i >= 2
+  raise "Ruby 2.0 or newer does not support Syck for YAML parsing."
+end
+
+YAML::ENGINE.yamler = 'syck'
+
 require 'redcloth'
 require 'syntax/convertors/html'
 
