@@ -57,14 +57,6 @@ Rake::TestTask.new do |t|
   t.verbose = true
 end
 
-desc "Tag the current trunk with the current release version"
-task :tag do
-  warn "WARNING: this will tag http://svn.jamisbuck.org/syntax/trunk using the tag v#{Syntax::Version::MAJOR}_#{Syntax::Version::MINOR}_#{Syntax::Version::TINY}"
-  warn "If you do not wish to continue, you have 5 seconds to cancel by pressing CTRL-C..."
-  5.times { |i| print "#{5-i} "; $stdout.flush; sleep 1 }
-  system "svn copy http://svn.jamisbuck.org/syntax/trunk http://svn.jamisbuck.org/syntax/tags/v#{Syntax::Version::MAJOR}_#{Syntax::Version::MINOR}_#{Syntax::Version::TINY} -m \"Tagging the #{Syntax::Version::STRING} release\""
-end
-
 package_name = "#{PACKAGE_NAME}-#{PACKAGE_VERSION}"
 package_dir = "pkg"
 package_dir_path = "#{package_dir}/#{package_name}"

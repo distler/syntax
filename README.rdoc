@@ -47,3 +47,5 @@ Tokenizing is straightforward process. Each time a new token is discovered by th
 
     rake clean
     rake package
+    gem push pkg/syntax-x.y.z.gem
+
