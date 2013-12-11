@@ -20,8 +20,8 @@ PACKAGE_FILES = FileList.new do |fl|
   [ "api", "doc" ].each do |dir|
     fl.include "#{dir}/**/*"
   end
-  fl.include "NEWS", "LICENSE", "#{PACKAGE_NAME}.gemspec"
-  fl.include "README", "setup.rb"
+  fl.include "CHANGELOG", "LICENSE", "#{PACKAGE_NAME}.gemspec"
+  fl.include "README.rdoc", "setup.rb"
   fl.include SOURCE_FILES
 end
 
@@ -57,31 +57,6 @@ Rake::TestTask.new do |t|
   t.verbose = true
 end
 
-desc "Prepackage warnings and reminders"
-task :prepackage do
-  unless ENV["OK"] == "yes"
-    puts "========================================================="
-    puts "Please check that the following files have been updated"
-    puts "in preparation for this release:"
-    puts
-    puts "  NEWS (with latest release notes)"
-    puts "  lib/syntax/version.rb (with current version number)"
-    puts
-    puts "  http://rpa-base.rubyforge.org/wiki/wiki.cgi?DeveloperChecklist"
-    puts "  http://rpa-base.rubyforge.org/wiki/wiki.cgi?GoodAPIDesign"
-    puts "  http://rpa-base.rubyforge.org/wiki/wiki.cgi?GoodPractices"
-    puts
-    puts "  tag v#{Syntax::Version::MAJOR}_#{Syntax::Version::MINOR}_#{Syntax::Version::TINY}"
-    puts
-    puts "If you are sure these have all been taken care of, re-run"
-    puts "rake with 'OK=yes'."
-    puts "========================================================="
-    puts
-
-    abort
-  end
-end
-
 desc "Tag the current trunk with the current release version"
 task :tag do
   warn "WARNING: this will tag http://svn.jamisbuck.org/syntax/trunk using the tag v#{Syntax::Version::MAJOR}_#{Syntax::Version::MINOR}_#{Syntax::Version::TINY}"
@@ -105,7 +80,7 @@ task :zip  => SOURCE_FILES + [ :rdoc, :manual, "#{package_dir}/#{zip_file}" ]
 task :gem  => SOURCE_FILES + [ :manual, "#{package_dir}/#{gem_file}" ]
 
 desc "Build all packages"
-task :package => [ :prepackage, :test, :gzip, :bzip, :zip, :gem ]
+task :package => [ :test, :gzip, :bzip, :zip, :gem ]
 
 directory package_dir
 
@@ -157,8 +132,8 @@ desc "Build the RDoc API documentation"
 Rake::RDocTask.new( :rdoc ) do |rdoc|
   rdoc.rdoc_dir = rdoc_dir
   rdoc.title    = "Syntax -- A library for syntax highlighting source code"
-  rdoc.options << '--line-numbers --inline-source --main README'
-  rdoc.rdoc_files.include 'README'
+  rdoc.options << '--line-numbers --inline-source --main README.rdoc'
+  rdoc.rdoc_files.include 'README.rdoc'
   rdoc.rdoc_files.include 'lib/**/*.rb'
 
   if can_require( "rdoc/generators/template/html/jamis" )
