@@ -50,7 +50,6 @@ task :clean do
   rm_rf "pkg"
   rm_rf "api"
   rm_rf "doc/manual-html"
-  rm_f  "ChangeLog"
 end
 
 Rake::TestTask.new do |t|
