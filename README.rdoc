@@ -2,7 +2,7 @@
 
 A syntax highlighting a library for Ruby.
 
-This fork is maintained and version 1.1.0 has been published from it. However, there's currently none or not much new development going on here and the original author, @jamis[https://github.com/jamis], recommends using CodeRay[http://coderay.rubychan.de], over this library.
+The official mtainained fork of this library is here[https://github.com/dblock/syntax]. However, there's currently none or not much new development going on and the original author, @jamis[https://github.com/jamis], recommends using CodeRay[http://coderay.rubychan.de], over this library.
 
 == About
 
