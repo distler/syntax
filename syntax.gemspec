@@ -8,9 +8,9 @@ Gem::Specification.new do |s|
   s.summary =
     "Syntax is Ruby library for performing simple syntax highlighting."
   s.files = Dir.glob("{data,lib,test}/**/*")
-  s.files << "README"
+  s.files << "README.rdoc"
   s.files << "LICENSE"
-  s.files << "NEWS"
+  s.files << "CHANGELOG"
   s.require_path = 'lib'
   s.autorequire = 'syntax'
 
